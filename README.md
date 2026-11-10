@@ -1,14 +1,42 @@
-# ParkLink Mobile
+# Mobile application
 
-Flutter mobile application for ParkLink. This snapshot also contains legacy transport features inherited from the original application.
+Flutter client for finding parking, booking spaces and managing a ParkLink account.
 
-## Setup
+## Responsibilities
+
+- Provides a map-first experience, search, bookings, profile and Copilot.
+- Calls the Gateway and loads OpenStreetMap tiles.
+- The repository includes legacy transport source but the ParkLink entry point is lib/main.dart.
+
+## Technology
+
+Flutter, Dart, flutter_map.
+
+## C4 architecture
+
+The diagram is a C4 **container view** focused on this repository and its relevant neighbors. It is generated from [Structurizr DSL](docs/architecture/workspace.dsl) using default styles, without custom colors. Arrows show the direction of an interaction; the full model also records message flows.
+
+![C4 container view: Mobile application](docs/architecture/containers.svg)
+
+To inspect or regenerate the diagram, open `docs/architecture/workspace.dsl` in Structurizr. With the Structurizr CLI and Graphviz installed:
+
+```sh
+structurizr.sh validate -workspace docs/architecture/workspace.dsl
+mkdir -p /tmp/parklink-diagram
+structurizr.sh export -workspace docs/architecture/workspace.dsl -format dot -output /tmp/parklink-diagram
+dot -Tsvg /tmp/parklink-diagram/structurizr-Containers.dot -o docs/architecture/containers.svg
+```
+
+## Run locally
 
 ```sh
 flutter pub get
 flutter run --dart-define=PARKLINK_API_URL=http://localhost:3000
+flutter test
 ```
 
-Firebase configuration files and signing credentials are not included. Supply your own configuration if you need Firebase. Legacy Google Maps functionality requires `--dart-define=GOOGLE_MAPS_API_KEY=...` with your own restricted key.
+Use `10.0.2.2` instead of `localhost` for the Android emulator. Firebase configuration and signing credentials are excluded; provide your own when required. Legacy Google Maps features require a restricted `GOOGLE_MAPS_API_KEY` supplied with `--dart-define`.
 
-The complete integrated workspace, backend services, and deployment configuration are available in [parklink-platform](https://github.com/1ASI0728-2620-16363-ParkLink/parklink-platform).
+## Repository boundary
+
+This repository is a snapshot of `apps/mobile` from [parklink-platform](https://github.com/1ASI0728-2620-16363-ParkLink/parklink-platform). Use the integrated workspace for the root npm configuration, shared dependencies, Docker build context, tests and local infrastructure. The repositories do not automatically synchronize.
