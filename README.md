@@ -39,4 +39,4 @@ Use `10.0.2.2` instead of `localhost` for the Android emulator. Firebase configu
 
 ## Repository boundary
 
-This repository is a snapshot of `apps/mobile` from [parklink-platform](https://github.com/1ASI0728-2620-16363-ParkLink/parklink-platform). Use the integrated workspace for the root npm configuration, shared dependencies, Docker build context, tests and local infrastructure. The repositories do not automatically synchronize.
+This repository is the source of the ParkLink mobile application. The backend, owner dashboard, and local infrastructure are available in [parklink-platform](https://github.com/1ASI0728-2620-16363-ParkLink/parklink-platform). The mobile source is maintained here, not in the platform workspace.
