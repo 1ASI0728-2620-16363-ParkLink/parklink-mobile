@@ -1,24 +1,24 @@
-# Mobile application
+# Aplicación móvil
 
-Flutter client for finding parking, booking spaces and managing a ParkLink account.
+Aplicación Flutter de ParkLink para buscar estacionamientos, gestionar reservas y administrar la cuenta.
 
-## Responsibilities
+## Responsabilidades
 
-- Provides a map-first experience, search, bookings, profile and Copilot.
-- Calls the Gateway and loads OpenStreetMap tiles.
-- The repository includes legacy transport source but the ParkLink entry point is lib/main.dart.
+- Ofrece un mapa, búsqueda, reservas, perfil y asistente conversacional.
+- Se comunica con la pasarela y carga los mosaicos de OpenStreetMap.
+- Incluye código heredado de transporte; el punto de entrada de ParkLink es lib/main.dart.
 
-## Technology
+## Tecnologías
 
-Flutter, Dart, flutter_map.
+Flutter, Dart y flutter_map.
 
-## C4 architecture
+## Arquitectura C4
 
-The diagram is a C4 **container view** focused on this repository and its relevant neighbors. It is generated from [Structurizr DSL](docs/architecture/workspace.dsl) using default styles, without custom colors. Arrows show the direction of an interaction; the full model also records message flows.
+El diagrama muestra una **vista de contenedores C4** centrada en este componente y sus relaciones relevantes. Se genera desde [Structurizr DSL](docs/architecture/workspace.dsl) con los estilos predeterminados, sin colores personalizados. Las flechas indican la dirección de cada interacción. El diagrama se conserva en inglés.
 
-![C4 container view: Mobile application](docs/architecture/containers.svg)
+![Diagrama C4 de Aplicación móvil](docs/architecture/containers.svg)
 
-To inspect or regenerate the diagram, open `docs/architecture/workspace.dsl` in Structurizr. With the Structurizr CLI and Graphviz installed:
+Para consultar o regenerar el diagrama, abra `docs/architecture/workspace.dsl` en Structurizr. Con Structurizr CLI y Graphviz instalados:
 
 ```sh
 structurizr.sh validate -workspace docs/architecture/workspace.dsl
@@ -27,7 +27,7 @@ structurizr.sh export -workspace docs/architecture/workspace.dsl -format dot -ou
 dot -Tsvg /tmp/parklink-diagram/structurizr-Containers.dot -o docs/architecture/containers.svg
 ```
 
-## Run locally
+## Ejecución local
 
 ```sh
 flutter pub get
@@ -35,8 +35,8 @@ flutter run --dart-define=PARKLINK_API_URL=http://localhost:3000
 flutter test
 ```
 
-Use `10.0.2.2` instead of `localhost` for the Android emulator. Firebase configuration and signing credentials are excluded; provide your own when required. Legacy Google Maps features require a restricted `GOOGLE_MAPS_API_KEY` supplied with `--dart-define`.
+Para el emulador de Android, use `10.0.2.2` en lugar de `localhost`. Los archivos de configuración de Firebase y las credenciales de firma no se incluyen; proporcione los suyos cuando sean necesarios. Las funciones heredadas de Google Maps requieren una clave restringida `GOOGLE_MAPS_API_KEY` mediante `--dart-define`.
 
-## Repository boundary
+## Relación con el proyecto
 
-This repository is the source of the ParkLink mobile application. The backend, owner dashboard, and local infrastructure are available in [parklink-platform](https://github.com/1ASI0728-2620-16363-ParkLink/parklink-platform). The mobile source is maintained here, not in the platform workspace.
+Este repositorio es la fuente de la aplicación móvil. El backend, el panel web y la infraestructura local están en [parklink-platform](https://github.com/1ASI0728-2620-16363-ParkLink/parklink-platform). El código móvil se mantiene aquí, no en el espacio integrado.
